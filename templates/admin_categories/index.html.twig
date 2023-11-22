@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminCategoriesController!{% endblock %}
+
+{% block body %}
+<div class="table section-p1">
+	<div class="wrapper">
+		<h1>Admin Catégories</h1>
+
+		<a href="{{ path('app_admin')}}" class="btn">Retour accueil BACKOFFICE</a>
+
+		<table>
+			<thead>
+				<tr>				
+					<th>ID</th>
+					<th>Nom de la catégorie</th>
+                    <th>Slug</th>					
+					<th>Parent de la catégorie</th>					
+					<th>Editer / Supprimer</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for data in categories %}
+					<tr>
+						<td>{{ data.id }}</td>
+						<td>{{ data.name }}</td>
+                        <td>{{ data.slug }}</td>
+						<td>{{ data.getParent() ? data.getParent().getName() : 'Aucun parent' }}</td>
+						<td>
+						<a href="{{ path('app_admin_categories_edit', {'id' : data.id}) }}" class="gear">
+								<i class="fa-solid fa-gears"></i>
+							</a>
+
+							<a onclick="return confirm('Voulez-vous supprimer ce membre ?')" href="{{ path('app_admin_categories_delete', {'id' : data.id}) }}" class="trash">
+								<i class="fa-solid fa-trash"></i>
+							</a> 
+						</td>											
+					</tr>
+				{% endfor %}
+			</tbody>
+
+		</table>
+		<a href="{{ path('app_admin_categories_new') }}" class="btn">Créer une nouvelle catégories</a>
+	</div>
+</div>
+{% endblock %}

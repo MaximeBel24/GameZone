@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin Produits{% endblock %}
+
+{% block body %}
+<div class="table section-p1">
+	<div class="wrapper">
+		<h1>Admin Produits</h1>
+
+		<a href="{{ path('app_admin')}}" class="btn">Retour accueil BACKOFFICE</a>
+
+		<table>
+				<tr>
+					<th>ID</th>
+					<th>Nom</th>
+					<th>Catégorie</th>
+					<th>Description</th>
+					<th>Prix</th>
+					<th>Stock</th>
+					<th>Date Enregistrement</th>
+					<th>Editer / Supprimer</th>
+				</tr>
+				{% for data in products %}
+					<tr>
+						<td>{{ data.id }}</td>
+						<td>{{ data.name }}</td>
+						<td>{{ data.categories.name }}
+						</td>	
+						<td>{{ data.shortDescription }}</td>
+						<td>{{ data.price }}€</td>
+						<td>{{ data.stock }}</td>
+						<td>{{ data.createdAt|date('d/m/Y à H:i:s') }}</td>
+						<td>
+							<a href="{{ path('app_admin_products_edit', {'id' : data.id}) }}" class="gear">
+								<i class="fa-solid fa-gears"></i>
+							</a>
+	
+							<a onclick="return confirm('Voulez-vous supprimer ce membre ?')" href="{{ path('app_admin_products_delete', {'id' : data.id}) }}" class="trash">
+								<i class="fa-solid fa-trash"></i>
+							</a> 
+						</td>											
+					</tr>
+				{% endfor %}
+	
+		</table>
+		<a href="{{ path('app_admin_products_new') }}" class="btn">Créer un nouveau produit</a>
+	 </div>
+ </div>
+{% endblock %}

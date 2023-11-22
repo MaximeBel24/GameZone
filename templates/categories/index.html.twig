@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catégorie de produits{% endblock %}
+
+{% block body %}
+
+<section class="banner section-p1">
+    <h2 class="banner-title">Catégorie Jeux Vidéo</h2>
+    <div class="banner-container">
+        <div class="banner-box">
+            <a href="{{path('list', {slug: 'playstation'} ) }}" class="btn">Jeux Playstation</a>
+        </div>
+        <div class="banner-box">
+            <a href="{{path('list', {slug: 'xbox'} ) }}" class="btn">Jeux Xbox</a>
+        </div>
+        <div class="banner-box">
+            <a href="{{path('list', {slug: 'nintendo'} ) }}" class="btn">Jeux Nintendo</a>
+        </div>
+        <div class="banner-box">
+            <a href="{{path('list', {slug: 'pc'} ) }}" class="btn">Jeux PC</a>
+        </div>
+    </div>
+</section>
+    
+    {# BANNER SECTION END #}
+    
+    {# BANNER2 SECTION START #}
+    
+<section class="banner2 section-p1">
+    <h2 class="banner-title">Catégorie Matériels</h2>
+    <div class="banner-container">
+        <div class="banner-box">
+            <a href="{{path('list', {slug: 'consoles'} ) }}" class="btn">Consoles</a>
+        </div>
+        <div class="banner-box">
+            <a href="{{path('list', {slug: 'manettes'} ) }}" class="btn">Manettes</a>
+        </div>
+        <div class="banner-box">
+            <a href="{{path('list', {slug: 'materiels pc'} ) }}" class="btn">Matériels PC</a>   
+        </div>
+    </div>
+</section>
+
+<section class="product section-p1">
+    <h2>Tous nos produits</h2>
+    <div class="pro-container">
+        {% for product in products %}
+            <div class="pro">
+                <p>{{ product.categories.name }}</p>
+                <img src="{{ asset('uploads/images/' ~ product.picture) }}" alt="">
+                <div class="body">                       
+                    <h3 >{{ product.name }}</h3>
+                    <p class="des">{{ product.shortDescription }}</p>
+                    
+                     
+                </div>
+                <div class="foot">
+                    <p class="price">{{ product.price }}€</p>
+                    <a href="{{ path('show_products', {id: product.id}) }}" ><i class="fa-solid fa-magnifying-glass"></i></a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

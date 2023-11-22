@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Admin | Formulaire Membre
+{% endblock %}
+
+{% block body %}
+<div class="form">
+	<div class="wrapper">
+		<h1 class="form-title">Modification d'une commande</h1>
+
+		{{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+
+		<div class="input-box">
+			{{ form_row(form.total_price) }}
+		</div>
+		<div class="input-box">
+			{{ form_row(form.status) }}
+		</div>
+
+		<button class="btn btn-primary my-2" type="submit">
+			Modifier la commande
+		</button>
+
+		{{ form_end(form) }}
+	</div>
+</div>
+{% endblock %}

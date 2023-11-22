@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Backoffice Utilisateur {% endblock %}
+
+{% block body %}
+<div class="table section-p1">
+	<div class="wrapper">
+		<h1>Admin Utilisateur</h1>
+
+		<a href="{{ path('app_admin')}}" class="btn">Retour accueil BACKOFFICE</a>
+
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>E-mail</th>
+					<th>Pseudo</th>
+					<th>Nom</th>
+					<th>Prénom</th>
+					<th>Adresse</th>
+					<th>Code Postal</th>
+					<th>Ville</th>
+					<th>Date Enregistrement</th>
+					<th>Editer / Supprimer</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for data in users %}
+					<tr>
+						<td>{{ data.id }}</td>
+						<td>{{ data.email }}</td>					
+						<td>{{ data.username }}</td>
+
+						<td>{{ data.lastname }}</td>
+						<td>{{ data.firstname }}</td>	
+						<td>{{ data.address }}</td>
+						<td>{{ data.zipcode }}</td>
+						<td>{{ data.city }}</td>
+						<td>{{ data.createdAt|date('d/m/Y à H:i:s') }}</td>
+						<td>
+							<a href="{{ path('app_admin_user_edit', {'id' : data.id}) }}" class="gear">
+								<i class="fa-solid fa-gears"></i>
+							</a>
+	
+							<a onclick="return confirm('Voulez-vous supprimer ce membre ?')" href="{{ path('app_admin_user_delete', {'id' : data.id}) }}" class="trash">
+								<i class="fa-solid fa-trash"></i>
+							</a> 
+						</td>											
+					</tr>
+				{% endfor %}
+			</tbody>
+	
+		</table>
+	</div>
+</div>
+{% endblock %}

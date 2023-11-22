@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des produits de la catégorie {{ category.name }}{% endblock %}
+
+{% block body %}
+<section class="product section-p1">
+    <h1>Liste des produits {{ category.name }}</h1>
+    <div class="pro-container">
+        {% for product in category.products %}
+            <div class="pro">
+                <img src="{{ asset('uploads/images/' ~ product.picture) }}" alt="">
+                <div class="body">                       
+                    <h3 >{{ product.name }}</h3>
+                    <p class="des">{{ product.shortDescription }}</p>
+                     
+                </div>
+                <div class="foot">
+                    <p class="price">{{ product.price }}€</p>
+                    <a href="{{ path('show_products', {id: product.id}) }}" ><i class="fa-solid fa-magnifying-glass"></i></a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

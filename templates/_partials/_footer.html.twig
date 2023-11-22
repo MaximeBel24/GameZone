@@ -1,0 +1,41 @@
+<footer class="section-p1">
+    <div class="col">
+        <p class="logo">GameZone</p>
+        <h3>Contact</h3>
+        <p><span>Adresse:</span> 562  rue de GameZone, 75000, Paris</p>
+        <p><span>Téléphone:</span> +01 XX 00 XX 00</p>
+        <p><span>Horaire:</span> 9:00 - 17:00, Lun - Sam</p>
+        
+    </div>
+
+    <div class="col">
+        <h3>Navigation</h3>
+        <a href="{{path('home')}}">Accueil</a>
+        <a href="{{path('app_categories')}}">Produit</a>
+        <a href="{{path('contact')}}">Contact</a>
+        <a href="{{ path('app_cart') }}">Panier</a>
+        {% if app.user %}                
+            <a href="{{ path('app_account') }}">Mes commandes</a>
+            <a href="{{ path('app_logout') }}">Déconnexion</a>
+        {% else %}
+            <a href="{{ path('app_register') }}">Inscription</a>
+            <a href="{{ path('app_login') }}">Connexion</a>
+        {% endif %}
+    </div>
+
+
+
+
+    <div class="col follow">
+        <h3>Suivez nous</h3>
+        <div class="icon">
+            <a href="https://www.facebook.com/?locale=fr_FR" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.twitter.com/" target="_blank"><i class="fa-brands fa-x-twitter" ></i></a>
+            <a href="https://instagram.com/" target="_blank"><i class="fa-brands fa-instagram" ></i></a>
+        </div>
+    </div>
+
+    <div class="copyright">
+        <p>© 2023 GameZone. Tous droits réservés</p>
+    </div>
+</footer>

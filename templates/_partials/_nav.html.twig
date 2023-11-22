@@ -1,0 +1,29 @@
+<header id="header">
+    <a href="{{path('home')}}" class="logo">GameZone</a>
+    <nav>
+        <ul id="navbar" class="navbar">
+            <li><a href="{{path('home')}}">Accueil</a></li>
+            <li><a href="{{path('app_categories')}}">Produit</a></li>
+            <li><a href="{{path('contact')}}">Contact</a></li>
+            <li><a href="{{ path('app_cart') }}"><i class="fa-solid fa-bag-shopping"></i>
+                {% if app.session.get('qt') > 0 %}           
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger ">
+                {{ app.session.get('qt') }}+
+
+                {% endif %}</a></li>           
+            {% if app.user %}
+                
+                <li><a href="{{ path('app_account') }}">Mes commandes</a></li>
+                <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
+            {% else %}
+                <li><a href="{{ path('app_register') }}">Inscription</a></li>
+                <li><a href="{{ path('app_login') }}">Connexion</a></li>
+            {% endif %}
+            </li>
+            <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+        </ul>
+    </nav>
+    <div class="mobile" id="mobile">
+        <i class="fa-solid fa-bars" id="bar"></i>
+    </div>
+</header>

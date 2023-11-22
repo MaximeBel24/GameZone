@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Création Catégorie{% endblock %}
+
+{% block body %}
+<div class="form">
+	<div class="wrapper">
+		<h1 class="form-title">Création d'une catégorie</h1>
+
+		{{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+		<div class="input-box">
+			{{ form_row(form.name) }}
+		</div>
+		<div class="input-box">
+			{{ form_row(form.slug) }}
+		</div>
+		<div class="input-box">
+			{{ form_row(form.parent) }}
+		</div>
+		
+		<button class="btn btn-primary my-2" type="submit">
+			Créer la catégorie
+		</button>
+
+		{{ form_end(form) }}
+	</div>
+</div>
+
+{% endblock %}

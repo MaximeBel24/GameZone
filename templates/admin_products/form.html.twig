@@ -1,0 +1,42 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Création Produits{% endblock %}
+
+{% block body %}
+<div class="form">
+	<div class="wrapper">
+		<h1 class="form-title">Création d'un produit</h1>
+
+		{{ form_start(form) }}
+		<div class="input-box">
+			{{ form_row(form.name) }}
+		</div>
+		<div class="input-box">
+			{{ form_row(form.categories) }}
+		</div>
+		
+		<div class="input-box">
+			{{ form_row(form.price) }}
+		</div>
+		<div class="input-box">
+			{{ form_row(form.stock) }}
+		</div>
+		<div class="input-box">
+			{{ form_row(form.picture) }}
+		</div>
+        <div class="input-box">
+			{{ form_row(form.short_description) }}
+		</div>
+		<div class="input-box">
+			{{ form_row(form.description) }}
+		</div>
+
+		<button class="btn btn-primary my-2" type="submit">
+			Créer le produit
+		</button>
+
+		{{ form_end(form) }}
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,185 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+{# HERO SECTION START #}
+
+<section id="hero" class="hero">
+    <div class="img-overlay img-overlay-blur">
+        <div class="img-title">Bienvenue sur GameZone</div>
+        <p class="img-description">Et entrer dans le monde du Jeux Vidéo</p>
+        <a href="{{path('app_categories')}}" class="img-link">Voir nos produits</a>
+    </div>
+</section>
+
+{# HERO SECTION END #}
+
+<section class="product section-p1">
+    <h2>Derniers jeux Playstation</h2>
+    <div class="pro-container">
+        {% for product in playstation %}
+            <div class="pro">
+                <img src="{{ asset('uploads/images/' ~ product.picture) }}" alt="">
+                <div class="body">                       
+                    <h3 >{{ product.name }}</h3>
+                    <p class="des">{{ product.shortDescription }}</p>
+                     
+                </div>
+                <div class="foot">
+                    <p class="price">{{ product.price }}€</p>
+                     <a href="{{ path('show_products', {id: product.id}) }}" ><i class="fa-solid fa-magnifying-glass"></i></a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="product section-p1">
+    <h2>Derniers jeux Xbox</h2>
+    <div class="pro-container">
+        {% for product in xbox %}
+            <div class="pro">
+                <img src="{{ asset('uploads/images/' ~ product.picture) }}" alt="">
+                <div class="body">                       
+                    <h3 >{{ product.name }}</h3>
+                    <p class="des">{{ product.shortDescription }}</p>
+                     
+                </div>
+                <div class="foot">
+                    <p class="price">{{ product.price }}€</p>
+                     <a href="{{ path('show_products', {id: product.id}) }}" ><i class="fa-solid fa-magnifying-glass"></i></a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="product section-p1">
+    <h2>Derniers jeux Nintendo</h2>
+    <div class="pro-container">
+        {% for product in nintendo %}
+            <div class="pro">
+                <img src="{{ asset('uploads/images/' ~ product.picture) }}" alt="">
+                <div class="body">                       
+                    <h3 >{{ product.name }}</h3>
+                    <p class="des">{{ product.shortDescription }}</p>
+                     
+                </div>
+                <div class="foot">
+                    <p class="price">{{ product.price }}€</p>
+                     <a href="{{ path('show_products', {id: product.id}) }}" ><i class="fa-solid fa-magnifying-glass"></i></a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="product section-p1">
+    <h2>Derniers jeux PC</h2>
+    <div class="pro-container">
+        {% for product in pc %}
+            <div class="pro">
+                <img src="{{ asset('uploads/images/' ~ product.picture) }}" alt="">
+                <div class="body">                       
+                    <h3 >{{ product.name }}</h3>
+                    <p class="des">{{ product.shortDescription }}</p>
+                     
+                </div>
+                <div class="foot">
+                    <p class="price">{{ product.price }}€</p>
+                    <a href="{{ path('show_products', {id: product.id}) }}" ><i class="fa-solid fa-magnifying-glass"></i></a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="news section-p1">
+    <h2>Les dernières actualités  et promotions Gaming</h2>
+    <div class="news-container">
+        {% for article in articles %}
+                <div class="new">
+                    <img src="{{ article.urlToImage }}" alt="Image non disponible">
+                    <div class="body">
+                        <h3 class="news-title">{{ article.title }}</h3>
+                        <p>{{ article.description }}</p>
+                        <p>Auteur:
+                            {% if article.author %}
+                                {{ article.author }}
+                            {% else %}
+                                Auteur inconnu
+                            {% endif %}
+                        </p>
+                        <p>Date de publication:{{ article.publishedAt }}</p>
+                        
+                    </div>
+                    <a href="{{ article.url }}">Lire l'article entier</a>
+                </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="product section-p1">
+    <h2>Dernieres Consoles</h2>
+    <div class="pro-container">
+        {% for product in consoles %}
+            <div class="pro">
+                <img src="{{ asset('uploads/images/' ~ product.picture) }}" alt="">
+                <div class="body">                       
+                    <h3 >{{ product.name }}</h3>
+                    <p class="des">{{ product.shortDescription }}</p>
+                     
+                </div>
+                <div class="foot">
+                    <p class="price">{{ product.price }}€</p>
+                    <a href="{{ path('show_products', {id: product.id}) }}" ><i class="fa-solid fa-magnifying-glass"></i></a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="product section-p1">
+    <h2>Dernieres Manettes</h2>
+    <div class="pro-container">
+        {% for product in manettes %}
+            <div class="pro">
+                <img src="{{ asset('uploads/images/' ~ product.picture) }}" alt="">
+                <div class="body">                       
+                    <h3 >{{ product.name }}</h3>
+                    <p class="des">{{ product.shortDescription }}</p>
+                     
+                </div>
+                <div class="foot">
+                    <p class="price">{{ product.price }}€</p>
+                    <a href="{{ path('show_products', {id: product.id}) }}" ><i class="fa-solid fa-magnifying-glass"></i></a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="product section-p1">
+    <h2>Derniers clavier/souris</h2>
+    <div class="pro-container">
+        {% for product in materielpc %}
+            <div class="pro">
+                <img src="{{ asset('uploads/images/' ~ product.picture) }}" alt="">
+                <div class="body">                       
+                    <h3 >{{ product.name }}</h3>
+                    <p class="des">{{ product.shortDescription }}</p>
+                     
+                </div>
+                <div class="foot">
+                    <p class="price">{{ product.price }}€</p>
+                    <a href="{{ path('show_products', {id: product.id}) }}" ><i class="fa-solid fa-magnifying-glass"></i></a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+{% endblock %}

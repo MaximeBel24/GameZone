@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier{% endblock %}
+
+{% block body %}
+<div class="table section-p1">
+    <div class="wrapper">
+    <h1>Votre panier</h1>
+    {% if items %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Produits</th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                    <th>Total</th>
+                    <th>Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                    <tr>
+                        <td>{{ item.products.name }}</td>
+                        <td>{{ item.products.price}}€</td>
+                        <td>
+                        <a href="{{ path('cart_drop', {id: item.products.id}) }}" class="quantity"><i class="fas fa-minus"></i></a>
+                        {{ item.quantity }}
+                        <a href="{{ path('cart_add', {id: item.products.id}) }}" class="quantity"><i class="fas fa-plus"></i></a>
+                        </td>
+                        <td>
+                        {{ item.products.price * item.quantity }}€
+                        </td>
+                        <td><a href="{{ path('cart_remove', {id: item.products.id} ) }}" class="delete"><i class="fas fa-times"></i></a></td>
+                    </tr>
+                    
+                {% endfor %}
+            </tbody>
+        </table>
+        <h2>Total : {{ total }}€</h2>
+
+         {% if app.user %}
+    
+            <a href="{{path('cart_orders')}}" class="btn btn-primary">Valider votre commande</a>
+        
+        {% else %}
+            <a href="{{path('app_login')}}" class="btn">Se connecter</a> Pour valider sa commande
+        {% endif %}
+    {% else %}
+        <p>Votre panier est vide</p>
+    {% endif %}
+    </div>
+</div>
+{% endblock %}
